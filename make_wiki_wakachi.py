@@ -24,10 +24,10 @@ with open(sys.argv[1], 'r') as f_in, open(sys.argv[2], 'w') as f_out, MeCab(opti
         for n in nodes:
             if not n.is_eos():
                 if n.feature != '':
-                    tweet_mors.append(n.feature)
+                    mors.append(n.feature)
                 else:
-                    tweet_mors.append(n.surface)
+                    mors.append(n.surface)
 
-        f_out.write(' '.join(tweet_mors) + '\n')
+        f_out.write(' '.join(mors) + '\n')
 
 print('finished')
