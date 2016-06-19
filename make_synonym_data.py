@@ -2,7 +2,10 @@ from gensim.models import word2vec
 import csv
 import sys
 
-model = word2vec.Word2Vec.load(sys.argv[1])
+logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
+
+sentences = word2vec.Text8Corpus(sys.argv[1])
+model = word2vec.Word2Vec(sentences, size=100, min_count=3, window=5)
 
 with open(sys.argv[2], 'r', newline='') as f:
     reader = csv.reader(f)
@@ -32,5 +35,3 @@ with open(sys.argv[3], 'w') as f:
             neologd_vocab_count += 1
             if neologd_vocab_count % disp_num == 0:
                 print('{}\t{} / {}\t{}'.format(hit_count, neologd_vocab_count, neologd_vocab_num, neologd_vocab_count / neologd_vocab_num))
-            
-            
