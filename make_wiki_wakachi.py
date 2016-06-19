@@ -1,5 +1,6 @@
 from natto import MeCab
 import sys
+import re
 
 line_num_total = sum(1 for line in open(sys.argv[1], 'r'))
 disp_num = line_num_total // 100
