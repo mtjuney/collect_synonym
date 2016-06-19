@@ -2,11 +2,22 @@ from gensim.models import word2vec
 import csv
 import sys
 import logging
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument('-s', '--size', type=int, default=100)
+parser.add_argument('-m', '--min_count', type=int, default=5)
+parser.add_argument('-w', '--window', type=int, default=5)
+parser.add_argument('-i', '--input', default='middle_data/jawiki_wakachi.txt')
+parser.add_argument('-o', '--output', default='data/synonym_data.tsv')
+parser.add_argument('-v', '--vocab', default='middle_data/neologd_vocab.csv')
+args = parser.parse_args()
+
 
 logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
 
 sentences = word2vec.Text8Corpus(sys.argv[1])
-model = word2vec.Word2Vec(sentences, size=100, min_count=3, window=5)
+model = word2vec.Word2Vec(sentences, size=args.size, min_count=args.min_count, window=args.window)
 
 with open(sys.argv[2], 'r', newline='') as f:
     reader = csv.reader(f)
