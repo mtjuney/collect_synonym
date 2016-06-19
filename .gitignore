@@ -3,3 +3,5 @@ keys_twitter.yml
 !/middle_data/.gitkeep
 /neologd_data/*
 !/neologd_data/.gitkeep
+/wiki_data/*
+!/wiki_data/.gitkeep
