@@ -1,0 +1,5 @@
+keys_twitter.yml
+/middle_data/*
+!/middle_data/.gitkeep
+/neologd_data/*
+!/neologd_data/.gitkeep
