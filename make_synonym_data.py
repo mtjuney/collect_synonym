@@ -1,6 +1,5 @@
 from gensim.models import word2vec
 import csv
-import sys
 import logging
 import argparse
 
@@ -16,10 +15,10 @@ args = parser.parse_args()
 
 logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
 
-sentences = word2vec.Text8Corpus(sys.argv[1])
+sentences = word2vec.Text8Corpus(args.input)
 model = word2vec.Word2Vec(sentences, size=args.size, min_count=args.min_count, window=args.window)
 
-with open(sys.argv[2], 'r', newline='') as f:
+with open(args.vocab, 'r', newline='') as f:
     reader = csv.reader(f)
     for row in reader:
         neologd_vocab = frozenset(row)
@@ -27,7 +26,7 @@ with open(sys.argv[2], 'r', newline='') as f:
 
 neologd_vocab_num = len(neologd_vocab)
 
-with open(sys.argv[3], 'w') as f:
+with open(args.output, 'w') as f:
     hit_count = 0
     neologd_vocab_count = 0
     disp_num = neologd_vocab_num // 100
