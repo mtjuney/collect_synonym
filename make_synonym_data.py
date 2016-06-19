@@ -1,6 +1,7 @@
 from gensim.models import word2vec
 import csv
 import sys
+import loging
 
 logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
 
