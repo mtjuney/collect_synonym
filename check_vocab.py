@@ -21,7 +21,7 @@ with open(sys.argv[2], 'r') as f:
     for line in f:
         tweet_count += 1
         if tweet_count % 100:
-            print('tweet : {} / {}'.format(tweet_count, tweet_num))
+            print('tweet : {} / {} : {}'.format(tweet_count, tweet_num, tweet_count / tweet_num))
         for line_splited in line.strip().split(' '):
             # for word in words:
             #     if line_splited == word:
