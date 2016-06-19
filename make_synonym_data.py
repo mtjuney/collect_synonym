@@ -45,4 +45,4 @@ with open(args.output, 'w') as f:
         finally:
             neologd_vocab_count += 1
             if neologd_vocab_count % disp_num == 0:
-                print('{}\t{} / {}\t{}'.format(hit_count, neologd_vocab_count, neologd_vocab_num, neologd_vocab_count / neologd_vocab_num))
+                print('hit words : {}\tprogress : {} / {}\t{:.0f}'.format(hit_count, neologd_vocab_count, neologd_vocab_num, neologd_vocab_count / neologd_vocab_num))

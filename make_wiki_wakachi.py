@@ -14,7 +14,7 @@ with open(sys.argv[1], 'r') as f_in, open(sys.argv[2], 'w') as f_out, MeCab(opti
     for line in f_in:
         line_num += 1
         if line_num % disp_num == 0:
-            print('{} / {} : {:.1f}%'.format(line_num, line_num_total, 100 * line_num / line_num_total))
+            print('{} / {} : {:.0f}%'.format(line_num, line_num_total, 100 * line_num / line_num_total))
 
         if line == '\n':
             continue
