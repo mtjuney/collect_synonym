@@ -9,6 +9,7 @@ print('line_num_total', line_num_total)
 # dicdirは処理するサーバ用
 ops={'dicdir': '/usr/lib/mecab/dic/mecab-ipadic-neologd', 'node_format': '%f[6]'}
 with open(sys.argv[1], 'r') as f_in, open(sys.argv[2], 'w') as f_out, MeCab(options=ops) as nm:
+    line_num = 0
     for line in f_in:
         line_num += 1
         if line_num % disp_num == 0:
