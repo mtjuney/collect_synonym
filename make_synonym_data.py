@@ -7,8 +7,8 @@ parser = argparse.ArgumentParser()
 parser.add_argument('-s', '--size', type=int, default=100)
 parser.add_argument('-m', '--min_count', type=int, default=5)
 parser.add_argument('-w', '--window', type=int, default=5)
-parser.add_argument('-i', '--input', default='middle_data/jawiki_wakachi.txt')
-parser.add_argument('-o', '--output', default='data/synonym_data.tsv')
+parser.add_argument('-i', '--input', default='middle_data/wiki_wakachi.txt')
+parser.add_argument('-o', '--output', default='output_data/synonym_data.tsv')
 parser.add_argument('-v', '--vocab', default='middle_data/neologd_vocab.csv')
 parser.add_argument('-ms', '--model_save', default='middle_data/word2vec.model')
 args = parser.parse_args()
@@ -48,4 +48,4 @@ with open(args.output, 'w') as f:
         finally:
             neologd_vocab_count += 1
             if neologd_vocab_count % disp_num == 0:
-                print('hit words : {}\tprogress : {} / {}\t{:.0f}'.format(hit_count, neologd_vocab_count, neologd_vocab_num, neologd_vocab_count / neologd_vocab_num))
+                print('hit words : {}\tprogress : {} / {}\t{:.0f}%'.format(hit_count, neologd_vocab_count, neologd_vocab_num, 100 * neologd_vocab_count / neologd_vocab_num))
