@@ -10,6 +10,7 @@ parser.add_argument('-w', '--window', type=int, default=5)
 parser.add_argument('-i', '--input', default='middle_data/jawiki_wakachi.txt')
 parser.add_argument('-o', '--output', default='data/synonym_data.tsv')
 parser.add_argument('-v', '--vocab', default='middle_data/neologd_vocab.csv')
+parser.add_argument('-ms', '--model_save', default='middle_data/word2vec.model')
 args = parser.parse_args()
 
 
@@ -17,6 +18,8 @@ logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=lo
 
 sentences = word2vec.Text8Corpus(args.input)
 model = word2vec.Word2Vec(sentences, size=args.size, min_count=args.min_count, window=args.window)
+
+model.save(args.model_save)
 
 with open(args.vocab, 'r', newline='') as f:
     reader = csv.reader(f)
